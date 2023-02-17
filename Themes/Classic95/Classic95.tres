@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=67 format=2]
+[gd_resource type="Theme" load_steps=70 format=2]
 
 [ext_resource path="res://Themes/Classic95/Styles/Panel/Panel.tres" type="StyleBox" id=1]
 [ext_resource path="res://Themes/Classic95/Styles/Panel/TabDisabled.tres" type="StyleBox" id=2]
@@ -54,6 +54,8 @@
 [ext_resource path="res://Themes/Classic95/Styles/Bars/VGrabber.png" type="Texture" id=52]
 [ext_resource path="res://Themes/Classic95/Styles/Bars/VGrabberD.png" type="Texture" id=53]
 [ext_resource path="res://Themes/Classic95/Styles/Panel/Panel.png" type="Texture" id=54]
+[ext_resource path="res://Font/Font.tres" type="DynamicFont" id=55]
+[ext_resource path="res://Font/W95FA.otf" type="DynamicFontData" id=56]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -120,6 +122,10 @@ axis_stretch_vertical = 1
 [sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.517647, 0.517647, 1, 1 )
 
+[sub_resource type="DynamicFont" id=13]
+size = 24
+font_data = ExtResource( 56 )
+
 [sub_resource type="StyleBoxFlat" id=12]
 bg_color = Color( 0, 0, 0.8, 1 )
 
@@ -156,13 +162,14 @@ Button/colors/font_color_focus = Color( 0, 0, 0, 1 )
 Button/colors/font_color_hover = Color( 0, 0, 0, 1 )
 Button/colors/font_color_pressed = Color( 0, 0, 0, 1 )
 Button/constants/hseparation = 2
-Button/fonts/font = null
+Button/fonts/font = ExtResource( 55 )
 Button/styles/disabled = ExtResource( 12 )
 Button/styles/focus = ExtResource( 10 )
 Button/styles/hover = ExtResource( 9 )
 Button/styles/normal = ExtResource( 9 )
 Button/styles/pressed = ExtResource( 11 )
 CheckBox/constants/hseparation = 2
+CheckBox/fonts/font = ExtResource( 55 )
 CheckBox/icons/checked = ExtResource( 13 )
 CheckBox/icons/checked_disabled = ExtResource( 17 )
 CheckBox/icons/radio_checked = ExtResource( 16 )
@@ -181,6 +188,7 @@ CheckButton/colors/font_color = Color( 0, 0, 0, 1 )
 CheckButton/colors/font_color_disabled = Color( 0.360784, 0.360784, 0.360784, 1 )
 CheckButton/colors/font_color_focus = Color( 0, 0, 0, 1 )
 CheckButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
+CheckButton/fonts/font = ExtResource( 55 )
 CheckButton/icons/off = ExtResource( 25 )
 CheckButton/icons/off_disabled = ExtResource( 23 )
 CheckButton/icons/on = ExtResource( 22 )
@@ -210,15 +218,18 @@ HSlider/styles/grabber_area = SubResource( 7 )
 HSlider/styles/grabber_area_highlight = SubResource( 7 )
 HSlider/styles/slider = SubResource( 8 )
 Label/colors/font_color = Color( 0, 0, 0, 1 )
+Label/fonts/font = ExtResource( 55 )
 LineEdit/colors/cursor_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/font_color = Color( 0, 0, 0, 1 )
 LineEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
 LineEdit/colors/font_color_uneditable = Color( 0.360784, 0.360784, 0.360784, 1 )
 LineEdit/colors/selection_color = Color( 0, 0, 0.501961, 1 )
+LineEdit/fonts/font = ExtResource( 55 )
 LineEdit/styles/focus = SubResource( 3 )
 LineEdit/styles/normal = ExtResource( 26 )
 LineEdit/styles/read_only = ExtResource( 27 )
 OptionButton/constants/arrow_margin = 6
+OptionButton/fonts/font = ExtResource( 55 )
 OptionButton/icons/arrow = ExtResource( 18 )
 OptionButton/styles/disabled = ExtResource( 31 )
 OptionButton/styles/focus = ExtResource( 28 )
@@ -231,6 +242,7 @@ PopupMenu/colors/font_color = Color( 0, 0, 0, 1 )
 PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 0.596078 )
 PopupMenu/colors/font_color_hover = Color( 1, 1, 1, 1 )
 PopupMenu/colors/font_color_separator = Color( 0, 0, 0, 1 )
+PopupMenu/fonts/font = ExtResource( 55 )
 PopupMenu/icons/checked = ExtResource( 13 )
 PopupMenu/icons/radio_checked = ExtResource( 16 )
 PopupMenu/icons/radio_unchecked = ExtResource( 15 )
@@ -243,8 +255,11 @@ PopupMenu/styles/panel = SubResource( 11 )
 PopupMenu/styles/separator = ExtResource( 33 )
 PopupPanel/styles/panel = ExtResource( 32 )
 ProgressBar/colors/font_color = Color( 0, 0, 0, 1 )
+ProgressBar/fonts/font = ExtResource( 55 )
 ProgressBar/styles/bg = SubResource( 6 )
 ProgressBar/styles/fg = SubResource( 5 )
+RichTextLabel/colors/default_color = Color( 0, 0, 0, 1 )
+RichTextLabel/fonts/normal_font = SubResource( 13 )
 SpinBox/icons/updown = ExtResource( 48 )
 TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
 TabContainer/colors/font_color_disabled = Color( 1, 1, 1, 0.670588 )
@@ -254,6 +269,7 @@ TabContainer/constants/label_valign_bg = 2
 TabContainer/constants/label_valign_fg = 0
 TabContainer/constants/side_margin = 8
 TabContainer/constants/top_margin = 24
+TabContainer/fonts/font = ExtResource( 55 )
 TabContainer/styles/panel = ExtResource( 1 )
 TabContainer/styles/tab_bg = ExtResource( 5 )
 TabContainer/styles/tab_disabled = ExtResource( 2 )
@@ -263,6 +279,7 @@ TextEdit/colors/font_color = Color( 0, 0, 0, 1 )
 TextEdit/colors/font_color_readonly = Color( 0.360784, 0.360784, 0.360784, 1 )
 TextEdit/colors/font_color_selected = Color( 1, 1, 1, 1 )
 TextEdit/colors/selection_color = Color( 0, 0.356863, 0.737255, 1 )
+TextEdit/fonts/font = ExtResource( 55 )
 TextEdit/styles/normal = ExtResource( 26 )
 TextEdit/styles/read_only = ExtResource( 27 )
 Tree/colors/custom_button_font_highlight = Color( 0.94, 0.94, 0.94, 1 )
@@ -280,6 +297,7 @@ Tree/constants/item_margin = 12
 Tree/constants/scroll_border = 4
 Tree/constants/scroll_speed = 12
 Tree/constants/vseparation = 4
+Tree/fonts/font = ExtResource( 55 )
 Tree/icons/arrow = ExtResource( 18 )
 Tree/icons/arrow_collapsed = ExtResource( 34 )
 Tree/icons/checked = ExtResource( 13 )
@@ -317,6 +335,7 @@ VSlider/styles/grabber_area = SubResource( 10 )
 VSlider/styles/grabber_area_highlight = SubResource( 10 )
 VSlider/styles/slider = SubResource( 9 )
 WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
+WindowDialog/fonts/title_font = ExtResource( 55 )
 WindowDialog/icons/close = ExtResource( 6 )
 WindowDialog/icons/close_highlight = ExtResource( 8 )
 WindowDialog/styles/panel = ExtResource( 7 )

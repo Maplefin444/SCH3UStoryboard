@@ -1,8 +1,38 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://MainScene/MainScene.gd" type="Script" id=1]
 [ext_resource path="res://SampleImage.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=3]
+[ext_resource path="res://MainScene/logo.png" type="Texture" id=4]
+[ext_resource path="res://MainScene/videoicon.png" type="Texture" id=5]
+[ext_resource path="res://MainScene/shutdown.png" type="Texture" id=6]
+[ext_resource path="res://MainScene/recycle.png" type="Texture" id=7]
+[ext_resource path="res://Font/W95FA.otf" type="DynamicFontData" id=8]
+
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
+
+uniform int amount = 40;
+
+void fragment()
+{
+	vec2 grid_uv = round(UV * float(amount)) / float(amount);
+	
+	vec4 text = texture(TEXTURE, grid_uv);
+	
+	COLOR = text;
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/amount = 500
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 32
+font_data = ExtResource( 8 )
 
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 1 )
@@ -12,25 +42,111 @@ margin_right = 1024.0
 margin_bottom = 600.0
 color = Color( 0.00392157, 0.509804, 0.505882, 1 )
 
-[node name="WindowDialog" type="WindowDialog" parent="."]
-visible = true
+[node name="Window" type="WindowDialog" parent="."]
 margin_left = 145.0
 margin_top = 156.0
 margin_right = 832.0
 margin_bottom = 545.0
 theme = ExtResource( 3 )
+popup_exclusive = true
 window_title = "Video"
 
-[node name="ViewportContainer" type="ViewportContainer" parent="WindowDialog"]
+[node name="ViewportContainer" type="ViewportContainer" parent="Window"]
+material = SubResource( 2 )
 margin_left = 7.0
 margin_top = 4.0
 margin_right = 679.0
 margin_bottom = 380.0
 stretch = true
 
-[node name="Viewport" type="Viewport" parent="WindowDialog/ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="Window/ViewportContainer"]
 size = Vector2( 672, 376 )
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 0
 
-[node name="SampleImage" parent="WindowDialog/ViewportContainer/Viewport" instance=ExtResource( 2 )]
+[node name="SampleImage" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 2 )]
+
+[node name="PopupMenu" type="PopupMenu" parent="."]
+margin_top = 496.0
+margin_right = 176.0
+margin_bottom = 554.0
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+
+[node name="ShutDown" type="Button" parent="PopupMenu"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 48.0
+text = "SHUT DOWN"
+icon = ExtResource( 6 )
+expand_icon = true
+
+[node name="NoAccess" type="AcceptDialog" parent="."]
+margin_left = 416.0
+margin_top = 264.0
+margin_right = 608.0
+margin_bottom = 328.0
+dialog_text = "Access is denied!"
+
+[node name="Recycle Bin" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 24.0
+margin_right = 88.0
+margin_bottom = 96.0
+rect_pivot_offset = Vector2( 64, 40 )
+expand = true
+
+[node name="Label" type="Label" parent="Recycle Bin"]
+margin_top = 56.0
+margin_right = 74.0
+margin_bottom = 72.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Recycle Bin"
+align = 1
+
+[node name="Sprite" type="Sprite" parent="Recycle Bin"]
+position = Vector2( 36, 27 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 7 )
+
+[node name="Taskbar" type="Panel" parent="."]
+margin_top = 552.0
+margin_right = 1024.0
+margin_bottom = 600.0
+mouse_filter = 2
+
+[node name="Time" type="Label" parent="Taskbar"]
+margin_left = 945.0
+margin_top = 10.0
+margin_right = 1015.0
+margin_bottom = 41.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 4 )
+text = "00:00"
+align = 2
+
+[node name="VideoButton" type="Button" parent="Taskbar"]
+margin_left = 120.0
+margin_top = 8.0
+margin_right = 216.0
+margin_bottom = 40.0
+text = "VIDEO"
+icon = ExtResource( 5 )
+expand_icon = true
+
+[node name="StartButton" type="Button" parent="Taskbar"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 104.0
+margin_bottom = 40.0
+text = "START"
+icon = ExtResource( 4 )
+expand_icon = true
+
+[connection signal="popup_hide" from="Window" to="." method="_on_Window_popup_hide"]
+[connection signal="pressed" from="PopupMenu/ShutDown" to="." method="_on_ShutDown_pressed"]
+[connection signal="pressed" from="Recycle Bin" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Taskbar/VideoButton" to="." method="_on_VideoButton_pressed"]
+[connection signal="pressed" from="Taskbar/StartButton" to="." method="_on_StartButton_pressed"]
