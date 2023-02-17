@@ -288,14 +288,23 @@ margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
 
+[node name="Bevel" type="TextEdit" parent="Taskbar"]
+margin_left = 889.0
+margin_top = 4.0
+margin_right = 1021.0
+margin_bottom = 43.0
+theme = ExtResource( 3 )
+readonly = true
+selecting_enabled = false
+
 [node name="Time" type="Label" parent="Taskbar"]
-margin_left = 864.0
+margin_left = 862.0
 margin_top = 10.0
-margin_right = 1015.0
+margin_right = 1013.0
 margin_bottom = 41.0
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 4 )
-text = "00:00"
+text = "00:00 AM"
 align = 2
 
 [node name="VideoButton" type="Button" parent="Taskbar"]
