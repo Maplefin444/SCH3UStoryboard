@@ -1,13 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://MainScene/MainScene.gd" type="Script" id=1]
-[ext_resource path="res://SampleImage.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/SceneHandler.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Themes/Classic95/Classic95.tres" type="Theme" id=3]
 [ext_resource path="res://MainScene/logo.png" type="Texture" id=4]
 [ext_resource path="res://MainScene/videoicon.png" type="Texture" id=5]
 [ext_resource path="res://MainScene/shutdown.png" type="Texture" id=6]
 [ext_resource path="res://MainScene/recycle.png" type="Texture" id=7]
 [ext_resource path="res://Font/W95FA.otf" type="DynamicFontData" id=8]
+[ext_resource path="res://MainScene/ie.png" type="Texture" id=9]
+[ext_resource path="res://MainScene/folder.png" type="Texture" id=10]
 
 [sub_resource type="Shader" id=5]
 code = "shader_type canvas_item;
@@ -145,16 +147,20 @@ margin_right = 1024.0
 margin_bottom = 600.0
 color = Color( 0.00392157, 0.509804, 0.505882, 1 )
 
-[node name="Window" type="WindowDialog" parent="."]
-margin_left = 145.0
-margin_top = 156.0
-margin_right = 832.0
-margin_bottom = 545.0
+[node name="Viewer" type="WindowDialog" parent="."]
+visible = true
+margin_left = 96.0
+margin_top = 112.0
+margin_right = 783.0
+margin_bottom = 501.0
 theme = ExtResource( 3 )
 popup_exclusive = true
-window_title = "Video"
+window_title = "Storyboard"
+__meta__ = {
+"_edit_group_": true
+}
 
-[node name="ViewportContainer" type="ViewportContainer" parent="Window"]
+[node name="ViewportContainer" type="ViewportContainer" parent="Viewer"]
 material = SubResource( 2 )
 margin_left = 7.0
 margin_top = 4.0
@@ -162,12 +168,12 @@ margin_right = 679.0
 margin_bottom = 380.0
 stretch = true
 
-[node name="Viewport" type="Viewport" parent="Window/ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="Viewer/ViewportContainer"]
 size = Vector2( 672, 376 )
 handle_input_locally = false
-render_target_update_mode = 0
+render_target_update_mode = 3
 
-[node name="SampleImage" parent="Window/ViewportContainer/Viewport" instance=ExtResource( 2 )]
+[node name="SceneHandler" parent="Viewer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 
 [node name="PopupMenu" type="PopupMenu" parent="."]
 margin_top = 496.0
@@ -195,7 +201,7 @@ dialog_text = "Access is denied!"
 [node name="Recycle Bin" type="TextureButton" parent="."]
 margin_left = 16.0
 margin_top = 24.0
-margin_right = 88.0
+margin_right = 90.0
 margin_bottom = 96.0
 rect_pivot_offset = Vector2( 64, 40 )
 expand = true
@@ -214,6 +220,68 @@ position = Vector2( 36, 27 )
 scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 7 )
 
+[node name="IE" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 120.0
+margin_right = 88.0
+margin_bottom = 211.0
+rect_pivot_offset = Vector2( 64, 40 )
+expand = true
+
+[node name="Label" type="Label" parent="IE"]
+margin_left = -1.0
+margin_top = 56.0
+margin_right = 73.0
+margin_bottom = 91.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = " Internet 
+Explorer"
+align = 1
+
+[node name="Sprite" type="Sprite" parent="IE"]
+position = Vector2( 36, 27 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 9 )
+
+[node name="Data" type="TextureButton" parent="."]
+margin_left = 16.0
+margin_top = 232.0
+margin_right = 88.0
+margin_bottom = 323.0
+rect_pivot_offset = Vector2( 64, 40 )
+expand = true
+
+[node name="Label" type="Label" parent="Data"]
+margin_left = -1.0
+margin_top = 56.0
+margin_right = 73.0
+margin_bottom = 91.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Storyboard
+Data"
+align = 1
+
+[node name="Sprite" type="Sprite" parent="Data"]
+position = Vector2( 36, 27 )
+scale = Vector2( 3.5, 3.5 )
+texture = ExtResource( 10 )
+
+[node name="Files" type="WindowDialog" parent="."]
+margin_left = 792.0
+margin_top = 117.0
+margin_right = 1008.0
+margin_bottom = 483.0
+popup_exclusive = true
+window_title = "Storyboard Data"
+
+[node name="Tree" type="Tree" parent="Files"]
+margin_right = 216.0
+margin_bottom = 366.0
+allow_reselect = true
+allow_rmb_select = true
+
 [node name="Taskbar" type="Panel" parent="."]
 margin_top = 552.0
 margin_right = 1024.0
@@ -221,7 +289,7 @@ margin_bottom = 600.0
 mouse_filter = 2
 
 [node name="Time" type="Label" parent="Taskbar"]
-margin_left = 945.0
+margin_left = 864.0
 margin_top = 10.0
 margin_right = 1015.0
 margin_bottom = 41.0
@@ -233,9 +301,9 @@ align = 2
 [node name="VideoButton" type="Button" parent="Taskbar"]
 margin_left = 120.0
 margin_top = 8.0
-margin_right = 216.0
+margin_right = 248.0
 margin_bottom = 40.0
-text = "VIDEO"
+text = "STORYBOARD"
 icon = ExtResource( 5 )
 expand_icon = true
 
@@ -248,8 +316,10 @@ text = "START"
 icon = ExtResource( 4 )
 expand_icon = true
 
-[connection signal="popup_hide" from="Window" to="." method="_on_Window_popup_hide"]
+[connection signal="popup_hide" from="Viewer" to="." method="_on_Window_popup_hide"]
 [connection signal="pressed" from="PopupMenu/ShutDown" to="." method="_on_ShutDown_pressed"]
 [connection signal="pressed" from="Recycle Bin" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="IE" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Data" to="." method="_on_Data_pressed"]
 [connection signal="pressed" from="Taskbar/VideoButton" to="." method="_on_VideoButton_pressed"]
 [connection signal="pressed" from="Taskbar/StartButton" to="." method="_on_StartButton_pressed"]
