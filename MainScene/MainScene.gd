@@ -56,6 +56,11 @@ func _on_TextureButton_pressed():
 
 
 func _on_ShutDown_pressed():
+	for i in get_children():
+		if i != $Off:
+			i.visible = false
+	$Off.visible = true
+	putOnTop($Off)
 	get_tree().quit()
 
 

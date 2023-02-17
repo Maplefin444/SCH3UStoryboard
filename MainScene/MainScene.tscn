@@ -148,7 +148,6 @@ margin_bottom = 600.0
 color = Color( 0.00392157, 0.509804, 0.505882, 1 )
 
 [node name="Viewer" type="WindowDialog" parent="."]
-visible = true
 margin_left = 96.0
 margin_top = 112.0
 margin_right = 783.0
@@ -156,9 +155,6 @@ margin_bottom = 501.0
 theme = ExtResource( 3 )
 popup_exclusive = true
 window_title = "Storyboard"
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="ViewportContainer" type="ViewportContainer" parent="Viewer"]
 material = SubResource( 2 )
@@ -171,7 +167,7 @@ stretch = true
 [node name="Viewport" type="Viewport" parent="Viewer/ViewportContainer"]
 size = Vector2( 672, 376 )
 handle_input_locally = false
-render_target_update_mode = 3
+render_target_update_mode = 0
 
 [node name="SceneHandler" parent="Viewer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 
@@ -324,6 +320,12 @@ margin_bottom = 40.0
 text = "START"
 icon = ExtResource( 4 )
 expand_icon = true
+
+[node name="Off" type="ColorRect" parent="."]
+visible = false
+margin_right = 1024.0
+margin_bottom = 601.0
+color = Color( 0, 0, 0, 1 )
 
 [connection signal="popup_hide" from="Viewer" to="." method="_on_Window_popup_hide"]
 [connection signal="pressed" from="PopupMenu/ShutDown" to="." method="_on_ShutDown_pressed"]

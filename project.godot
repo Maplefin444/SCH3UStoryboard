@@ -10,7 +10,7 @@ config_version=4
 
 [application]
 
-config/name="SCH3U Storyboard"
+config/name="SCH3U_Storyboard"
 run/main_scene="res://MainScene/MainScene.tscn"
 config/icon="res://icon.png"
 
