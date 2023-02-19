@@ -145,18 +145,23 @@ mouse_filter = 2
 [node name="BG" type="ColorRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
+mouse_filter = 2
 color = Color( 0.00392157, 0.509804, 0.505882, 1 )
 
-[node name="Viewer" type="WindowDialog" parent="."]
+[node name="GUI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Viewer" type="WindowDialog" parent="GUI"]
 margin_left = 96.0
 margin_top = 112.0
 margin_right = 783.0
 margin_bottom = 501.0
+mouse_filter = 1
 theme = ExtResource( 3 )
-popup_exclusive = true
 window_title = "Storyboard"
 
-[node name="ViewportContainer" type="ViewportContainer" parent="Viewer"]
+[node name="ViewportContainer" type="ViewportContainer" parent="GUI/Viewer"]
 material = SubResource( 2 )
 margin_left = 7.0
 margin_top = 4.0
@@ -164,37 +169,14 @@ margin_right = 679.0
 margin_bottom = 380.0
 stretch = true
 
-[node name="Viewport" type="Viewport" parent="Viewer/ViewportContainer"]
+[node name="Viewport" type="Viewport" parent="GUI/Viewer/ViewportContainer"]
 size = Vector2( 672, 376 )
 handle_input_locally = false
 render_target_update_mode = 0
 
-[node name="SceneHandler" parent="Viewer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
+[node name="SceneHandler" parent="GUI/Viewer/ViewportContainer/Viewport" instance=ExtResource( 2 )]
 
-[node name="PopupMenu" type="PopupMenu" parent="."]
-margin_top = 496.0
-margin_right = 176.0
-margin_bottom = 554.0
-hide_on_item_selection = false
-hide_on_checkable_item_selection = false
-
-[node name="ShutDown" type="Button" parent="PopupMenu"]
-margin_left = 8.0
-margin_top = 8.0
-margin_right = 160.0
-margin_bottom = 48.0
-text = "SHUT DOWN"
-icon = ExtResource( 6 )
-expand_icon = true
-
-[node name="NoAccess" type="AcceptDialog" parent="."]
-margin_left = 416.0
-margin_top = 264.0
-margin_right = 608.0
-margin_bottom = 328.0
-dialog_text = "Access is denied!"
-
-[node name="Recycle Bin" type="TextureButton" parent="."]
+[node name="Recycle Bin" type="TextureButton" parent="GUI"]
 margin_left = 16.0
 margin_top = 24.0
 margin_right = 90.0
@@ -202,7 +184,7 @@ margin_bottom = 96.0
 rect_pivot_offset = Vector2( 64, 40 )
 expand = true
 
-[node name="Label" type="Label" parent="Recycle Bin"]
+[node name="Label" type="Label" parent="GUI/Recycle Bin"]
 margin_top = 56.0
 margin_right = 74.0
 margin_bottom = 72.0
@@ -211,12 +193,12 @@ custom_fonts/font = SubResource( 3 )
 text = "Recycle Bin"
 align = 1
 
-[node name="Sprite" type="Sprite" parent="Recycle Bin"]
+[node name="Sprite" type="Sprite" parent="GUI/Recycle Bin"]
 position = Vector2( 36, 27 )
 scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 7 )
 
-[node name="IE" type="TextureButton" parent="."]
+[node name="IE" type="TextureButton" parent="GUI"]
 margin_left = 16.0
 margin_top = 120.0
 margin_right = 88.0
@@ -224,7 +206,7 @@ margin_bottom = 211.0
 rect_pivot_offset = Vector2( 64, 40 )
 expand = true
 
-[node name="Label" type="Label" parent="IE"]
+[node name="Label" type="Label" parent="GUI/IE"]
 margin_left = -1.0
 margin_top = 56.0
 margin_right = 73.0
@@ -235,12 +217,12 @@ text = " Internet
 Explorer"
 align = 1
 
-[node name="Sprite" type="Sprite" parent="IE"]
+[node name="Sprite" type="Sprite" parent="GUI/IE"]
 position = Vector2( 36, 27 )
 scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 9 )
 
-[node name="Data" type="TextureButton" parent="."]
+[node name="Data" type="TextureButton" parent="GUI"]
 margin_left = 16.0
 margin_top = 232.0
 margin_right = 88.0
@@ -248,7 +230,7 @@ margin_bottom = 323.0
 rect_pivot_offset = Vector2( 64, 40 )
 expand = true
 
-[node name="Label" type="Label" parent="Data"]
+[node name="Label" type="Label" parent="GUI/Data"]
 margin_left = -1.0
 margin_top = 56.0
 margin_right = 73.0
@@ -259,12 +241,12 @@ text = "Storyboard
 Data"
 align = 1
 
-[node name="Sprite" type="Sprite" parent="Data"]
+[node name="Sprite" type="Sprite" parent="GUI/Data"]
 position = Vector2( 36, 27 )
 scale = Vector2( 3.5, 3.5 )
 texture = ExtResource( 10 )
 
-[node name="Files" type="WindowDialog" parent="."]
+[node name="Files" type="WindowDialog" parent="GUI"]
 margin_left = 792.0
 margin_top = 117.0
 margin_right = 1008.0
@@ -272,19 +254,42 @@ margin_bottom = 483.0
 popup_exclusive = true
 window_title = "Storyboard Data"
 
-[node name="Tree" type="Tree" parent="Files"]
+[node name="Tree" type="Tree" parent="GUI/Files"]
 margin_right = 216.0
 margin_bottom = 366.0
 allow_reselect = true
 allow_rmb_select = true
 
-[node name="Taskbar" type="Panel" parent="."]
+[node name="PopupMenu" type="PopupMenu" parent="GUI"]
+margin_top = 496.0
+margin_right = 176.0
+margin_bottom = 554.0
+hide_on_item_selection = false
+hide_on_checkable_item_selection = false
+
+[node name="ShutDown" type="Button" parent="GUI/PopupMenu"]
+margin_left = 8.0
+margin_top = 8.0
+margin_right = 160.0
+margin_bottom = 48.0
+text = "SHUT DOWN"
+icon = ExtResource( 6 )
+expand_icon = true
+
+[node name="Access" type="AcceptDialog" parent="GUI"]
+margin_left = 448.0
+margin_top = 265.0
+margin_right = 577.0
+margin_bottom = 329.0
+dialog_text = "Access is denied!"
+
+[node name="Taskbar" type="Panel" parent="GUI"]
 margin_top = 552.0
 margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
 
-[node name="Bevel" type="TextEdit" parent="Taskbar"]
+[node name="Bevel" type="TextEdit" parent="GUI/Taskbar"]
 margin_left = 889.0
 margin_top = 4.0
 margin_right = 1021.0
@@ -293,7 +298,7 @@ theme = ExtResource( 3 )
 readonly = true
 selecting_enabled = false
 
-[node name="Time" type="Label" parent="Taskbar"]
+[node name="Time" type="Label" parent="GUI/Taskbar"]
 margin_left = 862.0
 margin_top = 10.0
 margin_right = 1013.0
@@ -303,7 +308,7 @@ custom_fonts/font = SubResource( 4 )
 text = "00:00 AM"
 align = 2
 
-[node name="VideoButton" type="Button" parent="Taskbar"]
+[node name="VideoButton" type="Button" parent="GUI/Taskbar"]
 margin_left = 120.0
 margin_top = 8.0
 margin_right = 248.0
@@ -312,7 +317,7 @@ text = "STORYBOARD"
 icon = ExtResource( 5 )
 expand_icon = true
 
-[node name="StartButton" type="Button" parent="Taskbar"]
+[node name="StartButton" type="Button" parent="GUI/Taskbar"]
 margin_left = 8.0
 margin_top = 8.0
 margin_right = 104.0
@@ -321,15 +326,15 @@ text = "START"
 icon = ExtResource( 4 )
 expand_icon = true
 
-[node name="Off" type="ColorRect" parent="."]
+[node name="Off" type="ColorRect" parent="GUI"]
 visible = false
 margin_right = 1024.0
 margin_bottom = 601.0
 color = Color( 0, 0, 0, 1 )
 
-[connection signal="pressed" from="PopupMenu/ShutDown" to="." method="_on_ShutDown_pressed"]
-[connection signal="pressed" from="Recycle Bin" to="." method="_on_TextureButton_pressed"]
-[connection signal="pressed" from="IE" to="." method="_on_TextureButton_pressed"]
-[connection signal="pressed" from="Data" to="." method="_on_Data_pressed"]
-[connection signal="pressed" from="Taskbar/VideoButton" to="." method="_on_VideoButton_pressed"]
-[connection signal="pressed" from="Taskbar/StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="GUI/Recycle Bin" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="GUI/IE" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="GUI/Data" to="." method="_on_Data_pressed"]
+[connection signal="pressed" from="GUI/PopupMenu/ShutDown" to="." method="_on_ShutDown_pressed"]
+[connection signal="pressed" from="GUI/Taskbar/VideoButton" to="." method="_on_VideoButton_pressed"]
+[connection signal="pressed" from="GUI/Taskbar/StartButton" to="." method="_on_StartButton_pressed"]

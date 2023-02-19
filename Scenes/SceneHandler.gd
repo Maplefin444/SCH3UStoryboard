@@ -20,3 +20,4 @@ func _input(event):
 	if Input.is_action_just_pressed("ui_left"):
 		if scene > 0:
 			scene -= 1
+

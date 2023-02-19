@@ -15,6 +15,7 @@ margin_left = 176.0
 margin_top = 112.0
 margin_right = 848.0
 margin_bottom = 488.0
+mouse_filter = 2
 
 [node name="Tile0434" type="Sprite" parent="."]
 position = Vector2( 408, 432 )
