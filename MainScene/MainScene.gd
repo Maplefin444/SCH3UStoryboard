@@ -7,6 +7,7 @@ onready var off = get_node("GUI/Off")
 onready var noaccess = get_node("GUI/Access")
 onready var menu = get_node("GUI/PopupMenu")
 onready var files = get_node("GUI/Files")
+var selected
 var tree_elements = []
 
 onready var handler = get_node("GUI/Viewer/ViewportContainer/Viewport/SceneHandler")
@@ -35,9 +36,11 @@ func _physics_process(delta):
 	
 	for i in range(len(tree_elements)):
 		if tree_elements[i] == tree.get_selected():
-			putOnTop($GUI/Viewer)
-			$GUI/Viewer.visible = true
-			handler.scene = i
+			if selected != tree.get_selected():
+				selected = tree.get_selected()
+				putOnTop($GUI/Viewer)
+				$GUI/Viewer.visible = true
+				handler.scene = i
 
 
 func _on_StartButton_pressed():
@@ -81,7 +84,3 @@ func putOnTop(control):
 	parent.move_child(control, parent.get_child_count())
 
 
-
-
-func _on_Viewer_gui_input(event):
-	print(event)
