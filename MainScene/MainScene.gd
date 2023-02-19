@@ -46,10 +46,6 @@ func _on_VideoButton_pressed():
 		putOnTop($Viewer)
 
 
-func _on_Window_popup_hide():
-	$Viewer.visible = false
-
-
 func _on_TextureButton_pressed():
 	$NoAccess.visible = true
 	putOnTop($NoAccess)

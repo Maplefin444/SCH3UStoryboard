@@ -327,7 +327,6 @@ margin_right = 1024.0
 margin_bottom = 601.0
 color = Color( 0, 0, 0, 1 )
 
-[connection signal="popup_hide" from="Viewer" to="." method="_on_Window_popup_hide"]
 [connection signal="pressed" from="PopupMenu/ShutDown" to="." method="_on_ShutDown_pressed"]
 [connection signal="pressed" from="Recycle Bin" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="IE" to="." method="_on_TextureButton_pressed"]
