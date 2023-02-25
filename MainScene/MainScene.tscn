@@ -288,6 +288,7 @@ margin_top = 552.0
 margin_right = 1024.0
 margin_bottom = 600.0
 mouse_filter = 2
+theme = ExtResource( 3 )
 
 [node name="Bevel" type="TextEdit" parent="GUI/Taskbar"]
 margin_left = 889.0
