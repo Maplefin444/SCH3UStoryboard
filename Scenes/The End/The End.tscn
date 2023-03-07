@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/The End/Panel8.png" type="Texture" id=1]
+[ext_resource path="res://Scenes/The End/The End.gd" type="Script" id=2]
+
+[node name="The End" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="WorkSpace" type="ColorRect" parent="."]
+margin_left = 176.0
+margin_top = 112.0
+margin_right = 848.0
+margin_bottom = 488.0
+mouse_filter = 2
+
+[node name="Panel8" type="Sprite" parent="."]
+position = Vector2( 512, 299 )
+texture = ExtResource( 1 )

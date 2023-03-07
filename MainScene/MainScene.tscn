@@ -92,11 +92,11 @@ void fragment() {
 shader = SubResource( 5 )
 shader_param/screen_size = Vector2( 320, 180 )
 shader_param/show_curvature = true
-shader_param/curvature_x_amount = 13.93
-shader_param/curvature_y_amount = 13.93
+shader_param/curvature_x_amount = 10.0
+shader_param/curvature_y_amount = 10.0
 shader_param/corner_color = Color( 0, 0, 0, 1 )
 shader_param/show_vignette = true
-shader_param/vignette_opacity = 0.08
+shader_param/vignette_opacity = 0.13
 shader_param/show_horizontal_scan_lines = true
 shader_param/horizontal_scan_lines_amount = 130.1
 shader_param/horizontal_scan_lines_opacity = 0.02
@@ -104,7 +104,7 @@ shader_param/show_vertical_scan_lines = false
 shader_param/vertical_scan_lines_amount = 320.0
 shader_param/vertical_scan_lines_opacity = 1.0
 shader_param/boost = 1.11
-shader_param/aberration_amount = 0.2
+shader_param/aberration_amount = 0.3
 
 [sub_resource type="Shader" id=1]
 code = "shader_type canvas_item;
@@ -122,7 +122,7 @@ void fragment()
 
 [sub_resource type="ShaderMaterial" id=2]
 shader = SubResource( 1 )
-shader_param/amount = 500
+shader_param/amount = 1000
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 8 )
@@ -251,6 +251,7 @@ margin_left = 792.0
 margin_top = 117.0
 margin_right = 1008.0
 margin_bottom = 483.0
+theme = ExtResource( 3 )
 popup_exclusive = true
 window_title = "Storyboard Data"
 
@@ -333,7 +334,7 @@ margin_right = 1024.0
 margin_bottom = 601.0
 color = Color( 0, 0, 0, 1 )
 
-[connection signal="pressed" from="GUI/Recycle Bin" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="GUI/Recycle Bin" to="." method="_on_Recycle_Bin_pressed"]
 [connection signal="pressed" from="GUI/IE" to="." method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="GUI/Data" to="." method="_on_Data_pressed"]
 [connection signal="pressed" from="GUI/PopupMenu/ShutDown" to="." method="_on_ShutDown_pressed"]

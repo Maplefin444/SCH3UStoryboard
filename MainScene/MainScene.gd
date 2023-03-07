@@ -84,3 +84,9 @@ func putOnTop(control):
 	parent.move_child(control, parent.get_child_count())
 
 
+
+
+
+
+func _on_Recycle_Bin_pressed():
+	$CanvasLayer/ScanLines.visible = !$CanvasLayer/ScanLines.visible
