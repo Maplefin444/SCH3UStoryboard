@@ -6,4 +6,4 @@ This is a project made in Godot for 2023 Semester 2 SCH3U's Storyboard project.
 
 Code was written mostly by James Huynh
 
-Graphics and story written by Sion Gang and Daniel Ye
+Graphics and story written and made by Sion Gang, Daniel Ye, and James Huynh
