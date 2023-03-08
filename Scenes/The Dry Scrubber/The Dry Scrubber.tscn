@@ -32,7 +32,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.4, 2.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 576, 352 ), Vector2( 736, 368 ), Vector2( 528, 328 ) ]
+"values": [ Vector2( 576, 352 ), Vector2( 736, 368 ), Vector2( 504, 328 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Panel5so2Start:rotation_degrees")
@@ -68,7 +68,7 @@ tracks/4/keys = {
 "times": PoolRealArray( 0, 1.4, 2.9 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 576, 280 ), Vector2( 720, 272 ), Vector2( 506, 272 ) ]
+"values": [ Vector2( 576, 280 ), Vector2( 720, 272 ), Vector2( 448, 272 ) ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -155,7 +155,7 @@ offset = Vector2( -139.738, 0 )
 
 [node name="Panel5So2React" type="Sprite" parent="."]
 position = Vector2( 576, 280 )
-rotation = -0.523598
+rotation = -0.523599
 texture = ExtResource( 4 )
 
 [node name="Panel5so2Start" type="Sprite" parent="."]
